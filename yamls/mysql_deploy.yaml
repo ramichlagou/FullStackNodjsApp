@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deploy
+  namespace: project-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      db: mysql
+  template:
+    metadata:
+      labels:
+        db: mysql
+    spec:
+      containers:
+      - name: mysql-instance
+        image: ramichlagou/mysql-mic:1
+        volumeMounts:
+        - name:         mysql-volume # name of volume should match claimName volume
+          mountPath:    /var/lib/mysql  # mount inside of contianer
+        envFrom:
+        - configMapRef:
+            name: mysql-configmap
+        - secretRef:
+            name: mysql-secret
+      volumes:
+      - name: mysql-volume
+        persistentVolumeClaim:
+          claimName: mysql-nfs-pvc1 # same name of pvc that was created
+...
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service1
+  namespace: project-k8s
+spec:
+  selector:
+    db: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+...

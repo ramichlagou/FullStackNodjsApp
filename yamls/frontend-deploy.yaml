@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deploy
+  namespace: project-k8s
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend-instance1
+        image: ramichlagou/front-vuejs:0.1
+        env:
+        - name: API
+          value: http://nodejs-service:3000/products
+...
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: student-project
+spec:
+  selector:
+    app: frontend
+  type: NodePort
+  ports:
+    - protocol:   TCP
+      port:       8080
+      targetPort: 8080
+      nodePort:   31090
+...
