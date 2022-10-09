@@ -4,7 +4,7 @@ metadata:
   name: mysql-nfs-pvc1
   namespace: project-k8s
 spec:
-  storageClassName: nfs
+  storageClassName: nfs1
   accessModes:
     - ReadWriteMany #  must be the same as PersistentVolume
   resources:

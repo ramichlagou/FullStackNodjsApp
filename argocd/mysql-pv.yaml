@@ -5,7 +5,7 @@ metadata:
   labels:
     name: mynfs1 # name can be anything
 spec:
-  storageClassName: nfs
+  storageClassName: nfs1
   capacity:
     storage: 200Mi
   accessModes:
