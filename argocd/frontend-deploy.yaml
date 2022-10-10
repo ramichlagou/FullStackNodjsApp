@@ -19,13 +19,13 @@ spec:
         image: ramichlagou/front-vuejs:0.1
         env:
         - name: API
-          value: http://nodejs-service:3000/products
+          value: http://nodejs-service1:3000/products
 ...
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: frontend-service1
   namespace: student-project
 spec:
   selector:

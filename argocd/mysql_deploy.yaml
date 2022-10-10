@@ -15,7 +15,7 @@ spec:
         db: mysql
     spec:
       containers:
-      - name: mysql-instance
+      - name: mysql-instance1
         image: ramichlagou/mysql-mic:1
         volumeMounts:
         - name:         mysql-volume # name of volume should match claimName volume
