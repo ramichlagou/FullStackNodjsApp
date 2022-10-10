@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend-instance1
-        image: ramichlagou/front-vuejs:0.1
+        image: ramichlagou/vuejs-frontand:1
         env:
         - name: API
           value: http://nodejs-service1:3000/products

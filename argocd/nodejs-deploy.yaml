@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nodejs-instance1
-        image: ramichlagou/nodejs-mic:0.1
+        image: ramichlagou/nodejs-backend:1
         envFrom:
         - configMapRef:
             name: mysql-configmap
