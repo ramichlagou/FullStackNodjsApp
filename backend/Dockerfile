@@ -1,6 +1,13 @@
-From node:lts-alpine
-WORKDIR /app
-COPY package.json /app
+From node:latest
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
 RUN npm install 
-COPY . /app
-CMD ["node","index.js"]
+
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "node","index.js" ]

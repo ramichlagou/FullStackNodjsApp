@@ -1,10 +1,5 @@
-//import express
-import express from "express"
-
-//import cors
-import cors from "cors"
-
-//import routes
+var express = require('express')
+var cors = require('cors')
 import Router from "./routes/routes.js"
 
 //init express
